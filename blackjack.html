@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>blackjack</title>
+
+	<style type="text/css">
+		* {margin: 0; padding: 0; border: 0; list-style: none;}
+		#blackjack{font: 10px arial,sans-serif; width: 996px; margin: 0 auto;}
+		.score{font-size: 16px;}
+		.card{display: block; float: left; background: #666; border: solid 1px #000; margin: 2px; font-size: 16px;}
+		.player{float: left; width: auto; overflow: hidden; padding: 10px; border: solid 1px #000; margin: 5px;}
+		.YOU, .COMPUTER{width: 300px;}
+		.DEALER{width: 964px;}
+		.COMPUTER .buttons, .DEALER .buttons{display: none;}
+		.history li{border: solid 1px #666; margin: 5px 0; background: #000; color: #fff;}
+		button{padding: 5px;}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="../js/underscore.js"></script>
+	<script src="../js/backbone.js"></script>
+	<script src="blackjack.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		});
+	</script>
+</head>
+<body>
+	<div id="blackjack">
+	</div>
+</body>
+	<script type="text/template" id="play-template">
+	</script>
+	<script type="text/template" id="player-template">
+		<div class ="<%= type %>">
+			<h3 ><%= type %></h3>
+			<p class="result">result: <%= handResult %></p>
+			<p class="bank">bank: <%= bank %></p>
+			<p class="score">current score: <%= score %></p>
+			<div class ="buttons">
+				<button class="hit">Hit</button>
+				<button class="stand">Stand</button>
+			</div>
+			<ul class="history"><% _.each(history, function(curhist) { %> <li><%= curhist[0] %>&nbsp;<%= curhist[1] %></li> <% }); %></ul>
+		</div>
+	</script>
+	<script type="text/template" id="card-template">
+		<span class ="card">
+			CARD:<br />
+			<%= card %><%= suit %><br />
+			<%= cValue %>
+		</span><br /><br />
+	</script>
+	<script type="text/template" id="history-template">
+		<span class ="card">
+			CARD:<br />
+			<%= card %><%= suit %><br />
+			<%= cValue %>
+		</span><br /><br />
+	</script>
+</html>
